@@ -1,12 +1,16 @@
 import { useState } from 'react'
 import "./styles/index.css"
+import Starter from './components/Starter'
+import Game from './components/Game';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [started, setStarted] = useState(0);
 
-  return (
-    <div>Hello World</div>
-  )
+  if(started) {
+    return <Game />;
+  }else{
+    return <Starter setStarted={setStarted} />
+  }
 }
 
 export default App

@@ -4,7 +4,7 @@ import Header from "./Header";
 import Body from "./Body";
 import Footer from "./Footer";
 
-export default function Game({dificultyLevel}) {
+export default function Game({dificultyLevel, allowMistakes}) {
     const [score, setScore] = useState(0);
     const [pause, setPause] = useState(false);
     const [gameOver, setGameOver] = useState(false);
@@ -37,16 +37,20 @@ export default function Game({dificultyLevel}) {
     useEffect(() => {
 
         function handleKeyDown(e) {
-            if(e.key == char && !pause) {
+            console.log(e.key)
+            
+            if(e.key == char && !pause && !gameOver) {
                 setNewCharacter()
                 setScore(sc => sc + dificultyLevel + 1)
+            }else if(e.key != "Shift" && e.key != "Space"){
+                if(!allowMistakes) setGameOver(true);
             }
         }
         
         window.addEventListener("keydown", handleKeyDown);
 
         return () => window.removeEventListener("keydown", handleKeyDown);
-    }, [char, pause]);
+    }, [char, pause, gameOver]);
     
     return (
         <div className="p-5">

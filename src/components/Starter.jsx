@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function Starter({setStarted, dificultyLevel, setDificultyLevel}) {
+export default function Starter({setStarted, dificultyLevel, setDificultyLevel, allowMistakes, setAllowMistakes}) {
     const startBtn = useRef();
 
     useEffect(() => {
@@ -27,7 +27,13 @@ export default function Starter({setStarted, dificultyLevel, setDificultyLevel})
                         return <button key={ind} onClick={e => setDificultyLevel(ind)} className={`bg-gray-50 hover:bg-gray-200 p-0.5 rounded-sm shadow-lg ${ind == dificultyLevel ? "font-semibold ring-2 ring-black" : 1}`}>{btn}</button>
                     })}
                 </div>
-                <button ref={startBtn} onClick={() => setStarted(true)} className="mt-2 btn-1">Start</button>
+
+                <div className="my-3 flex gap-1 items-center">
+                    <input type="checkbox" id="allow_mistakes_inp" checked={allowMistakes} className="w-4 h-4" onChange={e => setAllowMistakes(e.target.checked)} />
+                    <label htmlFor="allow_mistakes_inp">Allow Mistakes</label>
+                </div>
+                
+                <button ref={startBtn} onClick={() => setStarted(true)} className="btn-1">Start</button>
             </div>
         </div>
     </div>;

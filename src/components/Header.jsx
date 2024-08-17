@@ -17,7 +17,6 @@ export default function Headers({score, pause, setPause, gameOver, dificultyLeve
             }else if(gameOver) {
                 clearTimeout(interval);
             }
-            console.log("HELLo")
         }, 10);
 
         return () => clearInterval(interval);

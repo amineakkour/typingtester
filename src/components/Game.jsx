@@ -41,8 +41,8 @@ export default function Game({dificultyLevel, allowMistakes}) {
             
             if(e.key == char && !pause && !gameOver) {
                 setNewCharacter()
-                setScore(sc => sc + dificultyLevel + 1)
-            }else if(e.key != "Shift" && e.key != "Space"){
+                setScore(sc => sc + dificultyLevel + 1);
+            }else if(!["Shift", "Space", "Alt", "AltGraph"].includes(e.key)){
                 if(!allowMistakes) setGameOver(true);
             }
         }

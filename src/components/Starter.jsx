@@ -1,6 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Starter({setStarted, dificultyLevel, setDificultyLevel}) {
+    const startBtn = useRef();
+
+    useEffect(() => {
+        startBtn.current.focus();
+    }, [])
 
     useEffect(() => {
         //set dificulty level on localstorage
@@ -22,7 +27,7 @@ export default function Starter({setStarted, dificultyLevel, setDificultyLevel})
                         return <button key={ind} onClick={e => setDificultyLevel(ind)} className={`bg-gray-50 hover:bg-gray-200 p-0.5 rounded-sm shadow-lg ${ind == dificultyLevel ? "font-semibold ring-2 ring-black" : 1}`}>{btn}</button>
                     })}
                 </div>
-                <button onClick={() => setStarted(true)} className="mt-2 btn-1">Start</button>
+                <button ref={startBtn} onClick={() => setStarted(true)} className="mt-2 btn-1">Start</button>
             </div>
         </div>
     </div>;

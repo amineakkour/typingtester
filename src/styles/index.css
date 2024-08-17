@@ -11,3 +11,24 @@
 .styled-font{
     font-family: "Edu VIC WA NT Beginner", cursive;
 }
+
+.to-down-1{
+    animation: 1s to-down-1 forwards;
+}
+
+@keyframes to-down-1 {
+    0%{
+        bottom: 100vh;
+    }
+    100%{
+        bottom: 30px;
+    }
+}
+
+.to-down-2{
+
+}
+
+.to-down-3{
+
+}

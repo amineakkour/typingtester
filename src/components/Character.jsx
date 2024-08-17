@@ -1,55 +1,57 @@
 import { useEffect, useState } from "react";
 
-export default function Character({dificultyLevel, pause, setGameOver}) {  
-    const [char, setChar] = useState();
+export default function Character({char, dificultyLevel, pause, setGameOver, score}) {  
+    
     const [charYPosition, setCharYPosition] = useState(0);
     const [charXPosition, setcharXPosition] = useState(0);
-    
-    useEffect(() => {
-        var chars;
-
-        switch(dificultyLevel) {
-            case 0: 
-                chars = "azertyuiopqsdfghjklmwxcvbn";
-                break;
-            case 1: 
-                chars = "1234567890azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN";
-                break;
-            case 2: 
-                chars = "1234567890azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN@&é'-_=()[]#<%:!;,.?/\\";
-                break;
-            default: 
-                chars = "azertyuiopqsdfghjklmwxcvbn";
-        }
-
-        setChar(chars[Math.floor(Math.random() * chars.length)]);
-    }, [])
+    const [timer, setTimer] = useState(0);
 
     useEffect(() => {
         let screenHeight = window.innerHeight;
-        
+        let speed =  5 / (dificultyLevel +1);
+
         //moving down animation 
-        if((charYPosition + 40 < screenHeight) && !pause) {
+        if((charYPosition + 73 < screenHeight) && !pause) {
             var intervalId = setInterval(() => {
                 setCharYPosition(prevPosition => prevPosition + 1);
-            }, 10   );
+            }, speed);
             return () => clearInterval(intervalId); 
         }
         
-        if(charYPosition + 40 >= screenHeight) setGameOver(true);
+        if(charYPosition + 73 >= screenHeight) {
+            setGameOver(true);
+            
+            //set localStorage
+            localStorage.setItem("last_score", score);
+            if(localStorage.getItem("best_score") < score){
+                localStorage.setItem("best_score", score);
+            }
+        };
 
-    }, [charYPosition, pause]);
+    }, [charYPosition, pause, timer]);
     
     useEffect(() => {
-        let screenWidth = window.innerWidth;
-
         //get random X position
-        setcharXPosition(Math.random() * screenWidth)
+        const width = window.innerWidth;
+
+        var x = Math.random() * width;
+        if(x < 50){
+            x = 50
+        }else if(x > width - 50){
+            x = width - 50;
+        }
+        
+        setcharXPosition(x)
+
     }, [])
     
     return (
-        <div className={`w-12 h-12 absolute text-5xl font-bold styled-font`} style={{top: `${charYPosition}px`, left: `${charXPosition}px`}}>
-            {char}
+        <div>
+            {charXPosition &&
+                <div className={`w-12 h-12 absolute text-5xl font-bold styled-font`} style={{top: `${charYPosition}px`, left: `${charXPosition}px`}}>
+                    {char}
+                </div>
+            }
         </div>
     )
 }

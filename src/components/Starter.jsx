@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export default function Starter({setStarted}) {
-    const [dificultyLevel, setDificultyLevel] = useState(0);
+export default function Starter({setStarted, dificultyLevel, setDificultyLevel}) {
+    
     
     return <div className="bg-gray-100 h-screen flex justify-center items-center">
         <div className="bg-gray-400 w-96 shadow-lg rounded-sm p-2">

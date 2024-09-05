@@ -15,13 +15,13 @@ export default function Game({setStarted, dificultyLevel, allowMistakes}) {
 
         switch(dificultyLevel) {
             case 0: 
-                chars = "azertyuiopqsdfghjklmwxcvbn";
+                chars = "azertyuiopqsdfghjkmwxcvbn";
                 break;
             case 1: 
-                chars = "1234567890azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN";
+                chars = "1234567890azertyuiopqsdfghjkmwxcvbnAZERTYUOPQSDFGHJKLMWXCVBN";
                 break;
             case 2: 
-                chars = "1234567890azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN@&<>{}=()[]#<%:!;.?/\\";
+                chars = "1234567890azertyuiopqsdfghjkmwxcvbnAZERTYUOPQSDFGHJKLMWXCVBN@&<>{}=()[]#<%:!;.?/\\";
                 break;
             default: 
                 chars = "azertyuiopqsdfghjklmwxcvbn";

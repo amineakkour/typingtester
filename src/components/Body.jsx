@@ -1,4 +1,24 @@
-export default function Body({gameOver}) {
+import { useEffect } from "react"
+
+export default function Body({gameOver, setStarted}) {
+    useEffect(() => {
+        
+        const eventListener = (e) => {
+            if(e.ctrlKey) {
+                if(e.keyCode == 82) {
+                    e.preventDefault();
+                    setStarted(false);
+                }
+            }
+        }
+        
+        document.addEventListener("keydown", eventListener);
+    
+        return () => {
+            document.removeEventListener("keydown", eventListener);
+        };
+    }, []);
+
     return (
         <div>
             {gameOver && 

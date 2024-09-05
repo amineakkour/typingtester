@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function Headers({score, pause, setPause, gameOver, dificultyLevel}) {
+export default function Headers({setStarted, score, pause, setPause, gameOver, dificultyLevel}) {
     const [timer, setTimer] = useState(0);
     const [dificultyLevelInStr, setDificultyLevelInStr] = useState("");
 
@@ -31,6 +31,10 @@ export default function Headers({score, pause, setPause, gameOver, dificultyLeve
         window.addEventListener("keydown", handlePauseWithSpace);
         return () => removeEventListener("keydown", handlePauseWithSpace);
     }, [])
+
+    function refreshPage() {
+        setStarted(false);
+    }
     
     return (
         <div className="flex justify-between items-center">
@@ -39,7 +43,7 @@ export default function Headers({score, pause, setPause, gameOver, dificultyLeve
                 <p>Level: {dificultyLevelInStr}</p>
                 <p>Timer: {(timer / 100).toFixed(1)}s</p>
                 <button onClick={() => setPause(v => !v)} className="hover:bg-gray-300 w-8 h-8 rounded-full"><i className={`fa-solid ${(pause || gameOver) ? "fa-play" : "fa-pause"}`}></i></button>
-                <button className="btn-1" onClick={e =>  window.location.reload()}>
+                <button className="btn-1" onClick={refreshPage}>
                     <i className="fa-solid fa-reply"></i>
                     &nbsp;Replay
                 </button>

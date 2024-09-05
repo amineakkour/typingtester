@@ -4,7 +4,7 @@ import Header from "./Header";
 import Body from "./Body";
 import Footer from "./Footer";
 
-export default function Game({dificultyLevel, allowMistakes}) {
+export default function Game({setStarted, dificultyLevel, allowMistakes}) {
     const [score, setScore] = useState(0);
     const [pause, setPause] = useState(false);
     const [gameOver, setGameOver] = useState(false);
@@ -53,8 +53,8 @@ export default function Game({dificultyLevel, allowMistakes}) {
     return (
         <div className="p-5">
             {!gameOver &&  <Character key={char} char={char} dificultyLevel={dificultyLevel} pause={pause} setGameOver={setGameOver} score={score} />}
-            <Header score={score} pause={pause} setPause={setPause} gameOver={gameOver} dificultyLevel={dificultyLevel} />
-            <Body gameOver={gameOver} />
+            <Header setStarted={setStarted} score={score} pause={pause} setPause={setPause} gameOver={gameOver} dificultyLevel={dificultyLevel} />
+            <Body gameOver={gameOver} setStarted={setStarted} />
             <Footer />
 
         </div>

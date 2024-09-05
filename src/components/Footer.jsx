@@ -8,7 +8,7 @@ export default function Footer() {
                     <span>|</span>
                     <p>Click Space to pause the game</p>
                 </div>            
-                <div>All rights reserved &copy; 2023</div>
+                <div>All rights reserved &copy; 2024</div>
             </div>
         </div>
     )

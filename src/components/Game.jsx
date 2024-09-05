@@ -36,9 +36,7 @@ export default function Game({dificultyLevel, allowMistakes}) {
     
     useEffect(() => {
 
-        function handleKeyDown(e) {
-            console.log(e.key)
-            
+        function handleKeyDown(e) {            
             if(e.key == char && !pause && !gameOver) {
                 setNewCharacter()
                 setScore(sc => sc + dificultyLevel + 1);

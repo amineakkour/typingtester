@@ -5,6 +5,7 @@ export default function Character({char, dificultyLevel, pause, setGameOver, sco
     const [charYPosition, setCharYPosition] = useState(0);
     const [charXPosition, setcharXPosition] = useState(0);
     const [timer, setTimer] = useState(0);
+    const [isUpper, setIsUpper] = useState(false);
 
     useEffect(() => {
         let screenHeight = window.innerHeight;
@@ -44,12 +45,18 @@ export default function Character({char, dificultyLevel, pause, setGameOver, sco
         setcharXPosition(x)
 
     }, [])
+
+    useEffect(() => {
+        const numbers = "0123456789";
+
+        if(!numbers.includes(char) && char == char.toUpperCase()) setIsUpper(true);
+    }, [])
     
     return (
         <div>
             {charXPosition &&
-                <div className={`w-12 h-12 absolute text-5xl font-bold`} style={{top: `${charYPosition}px`, left: `${charXPosition}px`}}>
-                    {char}
+                <div className={`absolute text-5xl font-bold`} style={{top: `${charYPosition}px`, left: `${charXPosition}px`}}>
+                    {isUpper ? <span><i className="fa-solid fa-arrow-up text-xl"></i>{char}</span> : char}
                 </div>
             }
         </div>

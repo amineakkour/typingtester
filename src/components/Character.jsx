@@ -47,7 +47,7 @@ export default function Character({char, dificultyLevel, pause, setGameOver, sco
     }, [])
 
     useEffect(() => {
-        const specialCharacters = "1234567890@&'<>{}=()[]#<%:!;,.?/\\";
+        const specialCharacters = "1234567890@&<>{}=()[]#<%:!;.?/\\";
 
         if(!specialCharacters.includes(char) && char == char.toUpperCase()) setIsUpper(true);
     }, [])

@@ -35,12 +35,11 @@ export default function Game({setStarted, dificultyLevel, allowMistakes}) {
     }, [])
     
     useEffect(() => {
-
-        function handleKeyDown(e) {            
+        function handleKeyDown(e) {     
             if(e.key == char && !pause && !gameOver) {
                 setNewCharacter()
                 setScore(sc => sc + dificultyLevel + 1);
-            }else if(!["Shift", "Space", "Alt", "AltGraph"].includes(e.key)){
+            }else if(!["Shift", "Space", "Alt", "AltGraph", "Control"].includes(e.key)){
                 if(!allowMistakes) setGameOver(true);
             }
         }

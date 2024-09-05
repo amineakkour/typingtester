@@ -47,9 +47,9 @@ export default function Character({char, dificultyLevel, pause, setGameOver, sco
     }, [])
 
     useEffect(() => {
-        const numbers = "0123456789";
+        const specialCharacters = "1234567890@&'<>{}=()[]#<%:!;,.?/\\";
 
-        if(!numbers.includes(char) && char == char.toUpperCase()) setIsUpper(true);
+        if(!specialCharacters.includes(char) && char == char.toUpperCase()) setIsUpper(true);
     }, [])
     
     return (

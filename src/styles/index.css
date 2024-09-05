@@ -19,10 +19,32 @@
     }
 }
 
-.to-down-2{
-
+.flash{
+    animation: flash .5s;
 }
 
-.to-down-3{
+@keyframes flash {
+    0%{
+        color: rgba(255, 0, 0, 1);
+    }
 
+    20%{
+        color: rgba(234, 252, 62, 1) ;
+    }
+
+    40% {
+        color: rgba(134, 248, 82, 1);
+    }
+
+    60% {
+        color: rgba(75, 216, 237, 1);
+    }
+
+    80% {
+        color: rgba(162, 84, 247, 1);
+    }
+
+    100%{
+        color: black;
+    }
 }

@@ -34,7 +34,7 @@ export default function Headers({score, pause, setPause, gameOver, dificultyLeve
     
     return (
         <div className="flex justify-between items-center">
-            <h2>Score: {score}</h2>
+            <h2 className={`${score ? "flash" : ""}`} key={score}>Score: {score}</h2>
             <div className="flex gap-5 items-center">
                 <p>Level: {dificultyLevelInStr}</p>
                 <p>Timer: {(timer / 100).toFixed(1)}s</p>

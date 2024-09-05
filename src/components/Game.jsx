@@ -26,8 +26,13 @@ export default function Game({setStarted, dificultyLevel, allowMistakes}) {
             default: 
                 chars = "azertyuiopqsdfghjklmwxcvbn";
         }
+        
+        // avoid picking the same charcter
+        do {
+            var newChar = chars[Math.floor(Math.random() * chars.length)];
+        } while (newChar === char);
 
-        setChar(chars[Math.floor(Math.random() * chars.length)]);
+        setChar(newChar);
     }
 
     useEffect(() => {

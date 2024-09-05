@@ -48,7 +48,7 @@ export default function Character({char, dificultyLevel, pause, setGameOver, sco
     return (
         <div>
             {charXPosition &&
-                <div className={`w-12 h-12 absolute text-5xl font-bold styled-font`} style={{top: `${charYPosition}px`, left: `${charXPosition}px`}}>
+                <div className={`w-12 h-12 absolute text-5xl font-bold`} style={{top: `${charYPosition}px`, left: `${charXPosition}px`}}>
                     {char}
                 </div>
             }

@@ -2,14 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner:wght@400..700&display=swap');
-
 .btn-1{
     @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded shadow-lg
-}
-
-.styled-font{
-    font-family: "Edu VIC WA NT Beginner", cursive;
 }
 
 .to-down-1{

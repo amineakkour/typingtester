@@ -8,18 +8,20 @@ export default function Character({char, dificultyLevel, pause, setGameOver, sco
     const [isUpper, setIsUpper] = useState(false);
 
     useEffect(() => {
-        let screenHeight = window.innerHeight;
-        let speed =  5 / (dificultyLevel +1);
+        if (pause || charYPosition + 73 >= window.innerHeight) return; 
+    
+        const speed = 20 / (dificultyLevel + 1);
+    
+        const intervalId = setInterval(() => {
+            console.log("Hello")
+            setCharYPosition(prevPosition => prevPosition + 4);
+        }, speed);
+    
+        return () => clearInterval(intervalId);
+    }, [charYPosition, pause, dificultyLevel]);
 
-        //moving down animation 
-        if((charYPosition + 73 < screenHeight) && !pause) {
-            var intervalId = setInterval(() => {
-                setCharYPosition(prevPosition => prevPosition + 1);
-            }, speed);
-            return () => clearInterval(intervalId); 
-        }
-        
-        if(charYPosition + 73 >= screenHeight) {
+    useEffect(() => {
+        if(charYPosition + 73 >= window.innerHeight) {
             setGameOver(true);
             
             //set localStorage
@@ -28,8 +30,7 @@ export default function Character({char, dificultyLevel, pause, setGameOver, sco
                 localStorage.setItem("best_score", score);
             }
         };
-
-    }, [charYPosition, pause, timer]);
+    }, [charYPosition])
     
     useEffect(() => {
         //get random X position

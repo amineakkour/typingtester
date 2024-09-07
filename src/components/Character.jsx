@@ -13,7 +13,6 @@ export default function Character({char, dificultyLevel, pause, setGameOver, sco
         const speed = 20 / (dificultyLevel + 1);
     
         const intervalId = setInterval(() => {
-            console.log("Hello")
             setCharYPosition(prevPosition => prevPosition + 4);
         }, speed);
     

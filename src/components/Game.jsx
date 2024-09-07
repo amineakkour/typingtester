@@ -58,7 +58,7 @@ export default function Game({setStarted, dificultyLevel, allowMistakes}) {
         <div className="p-5">
             {!gameOver &&  <Character key={char} char={char} dificultyLevel={dificultyLevel} pause={pause} setGameOver={setGameOver} score={score} />}
             <Header setStarted={setStarted} score={score} pause={pause} setPause={setPause} gameOver={gameOver} dificultyLevel={dificultyLevel} />
-            <Body gameOver={gameOver} setStarted={setStarted} />
+            <Body gameOver={gameOver} setStarted={setStarted} pause={pause} />
             <Footer />
 
         </div>

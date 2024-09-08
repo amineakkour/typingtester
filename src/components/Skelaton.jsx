@@ -7,6 +7,7 @@ export default function Skelaton() {
     const [dificultyLevel, setDificultyLevel] = useState(parseInt(localStorage.getItem("dificulty_level")) || 0);
     const [allowMistakes, setAllowMistakes] = useState(true);
     const [deviceAllowed, setDeviceAllowed] = useState(true);
+    const [mistakesAllowed, setMistakesAllowed] = useState(3);
 
     useEffect(() => {
         if(window.outerWidth < 700) setDeviceAllowed(false);
@@ -14,9 +15,9 @@ export default function Skelaton() {
 
     if(deviceAllowed) {
         if (started) {
-            return <Game setStarted={setStarted} dificultyLevel={dificultyLevel} allowMistakes={allowMistakes} />;
+            return <Game mistakesAllowed={mistakesAllowed} setStarted={setStarted} dificultyLevel={dificultyLevel} allowMistakes={allowMistakes} />;
         } else {
-            return <Starter allowMistakes={allowMistakes} setAllowMistakes={setAllowMistakes} setStarted={setStarted} dificultyLevel={dificultyLevel} setDificultyLevel={setDificultyLevel} />
+            return <Starter mistakesAllowed={mistakesAllowed} setMistakesAllowed={setMistakesAllowed} allowMistakes={allowMistakes} setAllowMistakes={setAllowMistakes} setStarted={setStarted} dificultyLevel={dificultyLevel} setDificultyLevel={setDificultyLevel} />
         }
     }else{
         return <div className='p-5'>

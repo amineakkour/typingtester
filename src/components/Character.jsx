@@ -6,7 +6,7 @@ export default function Character({char, dificultyLevel, pause, setGameOver, sco
     const [charXPosition, setcharXPosition] = useState(0);
     const [timer, setTimer] = useState(0);
     const [isUpper, setIsUpper] = useState(false);
-
+    
     useEffect(() => {
         if (pause || charYPosition + 73 >= window.innerHeight) return; 
     
